@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private IndexedDb: IndexedDb) {
 
     this.createOnline$().subscribe(isConnected => {
-      this.IndexedDb.createDB();
+      this.IndexedDb.updateDB();
       if (isConnected) {
         swal.fire('En Linea', 'Volviste a tener conexión!', 'success');
       } else {

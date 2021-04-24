@@ -16,7 +16,7 @@ export class IndexedDb {
       }
     });
   }
-  
+
   async deleteDB() {
     await deleteDB(this.dbName);
   }
