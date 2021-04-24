@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="ProgramaTuBreak">
+  <link rel="apple-touch-icon" href="assets/icons/icon-152x152.png">
+  <meta name="description" content="ProgramaTuBreak">
   <meta charset="utf-8">
   <title>Programa Tu Break</title>
   <base href="/">
@@ -9,10 +20,27 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
 </head>
+
 <body>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
+  <script type="text/javascript">
+    function DetectIE() {
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf("MSIE ");
+      if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        document.body.innerHTML =
+          '<div style="width: 950px; margin-right: auto; margin-left: auto; background-repeat: no-repeat; background-position: center top;">' +
+          '<div style="background-color: yellow; width: 100%; border-radius: 10px; padding: 10px; color: red;">' +
+          'Hemos detectado que estas utilizando Internet Explorer el cual no esta soportado, te recomendamos usar otro navegador para una mejor experiencia de usuario y correcta visualización.' +
+          '</div>' +
+          '</div>';
+      }
+    }
+    DetectIE();
+  </script>
 </body>
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/8.4.2/firebase-app.js"></script>
 
@@ -22,4 +50,5 @@
 
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
+
 </html>
