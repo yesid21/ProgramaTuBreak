@@ -9,7 +9,7 @@ export class MaestrosDb {
 
   maestros: Objetomaestros[] = [
     { id: 1, nombre: 'Hamburguesa', type: 1, precio: 13000, img: 'hamburguesa' },
-    { id: 2, nombre: 'Perro', type: 1, precio: 80000, img: 'perro' },
+    { id: 2, nombre: 'Perro', type: 1, precio: 8000, img: 'perro' },
     { id: 3, nombre: 'Arepa rellena', type: 1, precio: 10000, img: 'areparellena' },
     { id: 4, nombre: 'Salchipapas', type: 1, precio: 10000, img: 'salchipapas' },
     { id: 5, nombre: 'Gratinados', type: 1, precio: 15000, img: 'gratinados' },
@@ -27,6 +27,9 @@ export class MaestrosDb {
     { id: 17, nombre: 'Tarjeta de débito', type: 4, precio: 0, img: null },
     { id: 18, nombre: 'Longaniza', type: 5, precio: 13000, img: 'longaniza' },
     { id: 19, nombre: 'Longaniza', type: 5, precio: 13000, img: 'longaniza' },
+    { id: 19, nombre: 'CocaCola', type: 6, precio: 3000, img: 'cocacola' },
+    { id: 19, nombre: 'Agua', type: 6, precio: 2500, img: 'agua' },
+    { id: 19, nombre: 'Cerveza', type: 6, precio: 3500, img: 'cerveza' },
   ];
 
   async updateTypeListData(id: number, nombre: string, type: number, precio: number, img: string) {

@@ -14,6 +14,8 @@ export class LugarComponent implements OnInit {
   @Output() changeValueCurrentStep = new EventEmitter<CurrentStep>();
   Steps = CurrentStep;
   lstMaterial: Objetomaestros[];
+  lstMaterial2: Objetomaestros[];
+  lstMaterial3: Objetomaestros[];
   constructor(readonly maestrosDB: MaestrosDb) {
   }
 
@@ -21,6 +23,8 @@ export class LugarComponent implements OnInit {
     switch (this.ObjDatos.LugarSelect.toUpperCase()) {
       case 'RESTAURANTE':
         this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 1);
+        this.lstMaterial2 = this.maestrosDB.maestros.filter(x => x.type === 6);
+        this.lstMaterial3 = this.maestrosDB.maestros.filter(x => x.type === 7);
         break;
       case 'PARQUEADERO':
         this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 3);
