@@ -50,7 +50,13 @@ section {
   }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 769px) and (-webkit-min-device-pixel-ratio: 1) {
+@media only screen and (min-device-width: 500px) and (max-device-width: 803px) and (-webkit-min-device-pixel-ratio: 1) {
+  section {
+    background-image: url("assets/images/bg_Programa_Tu_Break_ipad_1.png");
+  }
+}
+
+@media only screen and (min-device-width: 770px) and (max-device-width: 2000px) and (-webkit-min-device-pixel-ratio: 1) {
   section {
     background-image: url("assets/images/bg_Programa_Tu_Break_ipad_1.png");
   }
@@ -73,31 +79,8 @@ main {
   margin-left: 0px !important;
 }
 
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .container, .container-sm, .container-md {
-    max-width: 100% !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .container, .container-sm, .container-md {
-    max-width: 100% !important;
-  }
-}
-
-@media (min-width: 576px) {
-  .container, .container-sm {
-    max-width: 100%;
-  }
-}
-
 .btn-circle-home
  {
    width: 100%;
+   border-radius: 42px;
  }
