@@ -177,3 +177,20 @@ main {
   background-color: #ffc107;
   border-color: #ffc107;
 }
+
+a {
+  color: #ffc107 !important;
+  text-decoration: none;
+  background-color: transparent;
+  font-family: Helvetica !important;
+}
+
+.lugar-img {
+  width: 97px;
+  border-radius: 26px;
+}
+
+.lugar-row{
+  margin-left: 2% !important;
+  margin-right: 28px !important;
+}
