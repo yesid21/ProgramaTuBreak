@@ -12,13 +12,16 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { DatosComponent } from './datos/datos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NumbersDirective } from './config/directives/appNumbersOnly.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    DatosComponent
+    DatosComponent,
+    NumbersDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -32,11 +35,16 @@ import { DatosComponent } from './datos/datos.component';
       enabled: environment.production, registrationStrategy: 'registerImmediately'
     }),
     FontAwesomeModule,
-    NgSelectModule
+    NgSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     FontAwesomeModule,
-    NgSelectModule
+    NgSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NumbersDirective
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

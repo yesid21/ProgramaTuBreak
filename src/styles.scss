@@ -90,6 +90,10 @@ main {
   font-family: cursive;
  }
 
+ .textPrincipal {
+  font-family: cursive;
+ }
+
  .flechatras {
   display: flex;
   position: absolute;
@@ -103,4 +107,31 @@ main {
   -webkit-box-shadow: 0px 6px 25px -1px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 6px 25px -1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 6px 25px -1px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-config {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.form-control:focus {
+  color: #eeca00;
+  background-color: white;
+  border-color: #eeca00;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(238 202 0 / 25%);
+}
+
+.form-control {
+  font-size: 14px;
+  color: #eeca00;
+  background-color: white;
+  border-color: #eeca00;
+  border-radius: 16px;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(238 202 0 / 25%);
 }
