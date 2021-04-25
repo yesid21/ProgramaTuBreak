@@ -17,6 +17,7 @@ export class DatosComponent implements OnInit {
   currentStep: CurrentStep;
   Steps = CurrentStep;
   changeValueCurrentStep = new EventEmitter<CurrentStep>();
+  changeValueObjDatos = new EventEmitter<DatosObject>();
 
   constructor(
     private Db: DatosDB,
@@ -72,8 +73,10 @@ export class DatosComponent implements OnInit {
     }
   }
 
-  despachar(){
-    this.currentStep = CurrentStep.STEP_2
+  despachar() {
+    window.scroll(0, 0);
+    this.currentStep = CurrentStep.STEP_2;
+    this.changeValueObjDatos.emit(this.ObjDatos);
     this.changeValueCurrentStep.emit(this.currentStep);
   }
 }

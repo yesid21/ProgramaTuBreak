@@ -66,7 +66,7 @@
       <div class="form-group mt-2">
         <label for="birthdaytime" class="textPrincipal">Fecha y hora de reserva</label>
         <input min="{{today}}" class="form-control text-principal" type="datetime-local" id="birthdaytime"
-          name="birthdaytime" [(ngModel)]="ObjDatos.fechaYHora" required>
+          name="birthdaytime" [(ngModel)]="ObjDatos.fechaYHora" placeholder="DD-MM-YYYY" required>
         <small class="text-danger textPrincipal" *ngIf="!ObjDatos.fechaYHora">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
@@ -110,4 +110,5 @@
   </div>
 </section>
 
-<app-lugar *ngIf="currentStep === Steps.STEP_2"></app-lugar>
+<app-lugar *ngIf="currentStep === Steps.STEP_2" [currentStep]="currentStep"
+  (changeValueCurrentStep)="currentStep = $event" [ObjDatos]="ObjDatos"></app-lugar>
