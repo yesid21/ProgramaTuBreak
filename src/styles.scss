@@ -24,7 +24,7 @@
   font-size: 18px;
   line-height: 1.2;
 }
-section {
+.section {
   height: 100%;
   background-image: url("assets/images/bg_Programa_Tu_Break@2x.png");
   background-size: cover;
@@ -45,19 +45,19 @@ section {
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 376px) and (-webkit-min-device-pixel-ratio: 3) {
-  section {
+  .section {
     background-image: url("assets/images/bg_Programa_Tu_Break_iphone_x.png");
   }
 }
 
 @media only screen and (min-device-width: 500px) and (max-device-width: 803px) and (-webkit-min-device-pixel-ratio: 1) {
-  section {
+  .section {
     background-image: url("assets/images/bg_Programa_Tu_Break_ipad_1.png");
   }
 }
 
 @media only screen and (min-device-width: 770px) and (max-device-width: 2000px) and (-webkit-min-device-pixel-ratio: 1) {
-  section {
+  .section {
     background-image: url("assets/images/bg_Programa_Tu_Break_ipad_1.png");
   }
 }
@@ -84,3 +84,23 @@ main {
    width: 100%;
    border-radius: 42px;
  }
+
+ .colorPrincipal {
+  color: #eeca00;
+  font-family: cursive;
+ }
+
+ .flechatras {
+  display: flex;
+  position: absolute;
+  left: 0;
+  -webkit-appearance: media-slider !important;
+  background: none !important;
+}
+
+.header-P {
+  background-color: white;
+  -webkit-box-shadow: 0px 6px 25px -1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 6px 25px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 6px 25px -1px rgba(0, 0, 0, 0.1);
+}
