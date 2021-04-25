@@ -198,3 +198,12 @@ a {
 .home-container {
   padding-top: 186px;
 }
+
+.card {
+  height: 50%;
+  overflow-y: scroll;
+  display: block;
+  position: fixed;
+  border: 0;
+  padding-right: 10px;
+}
