@@ -63,7 +63,7 @@ export class LugarComponent implements OnInit {
   }
 
 
-  Add(item: Objetomaestros, quantity) {
+  Add(item: DatosQuanty, quantity) {
     let exists = false;
     let itemToModified: DatosQuanty;
     this.detailsObj.forEach(control => {
@@ -81,7 +81,9 @@ export class LugarComponent implements OnInit {
       itemToModified.quantity = parseFloat(quantity);
       swal.fire('Producto Actualizado', 'El producto ya existia asi que fue actualizado', 'success');
     } else {
-      this.detailsObj.push(item); swal.fire('Producto Agregado', 'El producto fue agregado', 'success');
+      item.quantity = parseFloat(quantity);
+      this.detailsObj.push(item);
+      swal.fire('Producto Agregado', 'El producto fue agregado', 'success');
     }
     this.changeValueobjModal.emit(this.detailsObj);
   }

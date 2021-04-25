@@ -13,8 +13,8 @@
     </div>
   </nav>
   <div class="row">
-    <div class="col-sm-4">
-      <div class="card w-100">
+    <div class="col-sm-12 h-50">
+      <div class="card w-100 overflow-auto">
         <!---->
         <div class="tab-content mt-5" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -52,7 +52,34 @@
         <!---->
       </div>
     </div>
+    <div class="col-sm-12">
+      <!--Table-->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of detailsObj; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <img src="assets/images/{{item.img}}.jpg" class="mr-2" style="width: 20px">
+              {{ item.nombre }}
+            </td>
+            <td>{{ item.precio | number }}</td>
+            <td>{{ item.quantity }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!--Table-->
+    </div>
   </div>
+
+
   <ng-template #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">{{objModal.nombre}}</h4>
@@ -73,7 +100,8 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancelar</button>
-      <button (click)="Add(objModal, dp.value); modal.close();" [disabled]="form.invalid" class="btn btn-warning">Siguiente</button>
+      <button (click)="Add(objModal, dp.value); modal.close();" [disabled]="form.invalid"
+        class="btn btn-warning">Siguiente</button>
     </div>
   </ng-template>
 </section>
