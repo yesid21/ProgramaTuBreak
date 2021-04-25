@@ -33,6 +33,14 @@
       </div>
     </div>
     <div *ngIf="ObjDatos.LugarSelect == 'Restaurante'" class="tab-pane fade" id="nav-contact" role="tabpanel"
-      aria-labelledby="nav-contact-tab">...</div>
+      aria-labelledby="nav-contact-tab">
+      <div class="row lugar-row">
+        <div class="col-6 col-md-4 mb-4 text-center" *ngFor="let item of lstMaterial3">
+          <img src="assets/images/{{item.img}}.jpg" class="lugar-img"><br>
+          <b>{{item.nombre}}</b><br>
+          <b>{{item.precio | number}}</b>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

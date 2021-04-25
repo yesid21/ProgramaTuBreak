@@ -30,6 +30,9 @@ export class MaestrosDb {
     { id: 19, nombre: 'CocaCola', type: 6, precio: 3000, img: 'cocacola' },
     { id: 19, nombre: 'Agua', type: 6, precio: 2500, img: 'agua' },
     { id: 19, nombre: 'Cerveza', type: 6, precio: 3500, img: 'cerveza' },
+    { id: 19, nombre: 'Gomitas', type: 7, precio: 2000, img: 'gomitas' },
+    { id: 19, nombre: 'Maní', type: 7, precio: 1000, img: 'mani' },
+    { id: 19, nombre: 'Paquetes', type: 7, precio: 4000, img: 'paquetes' },
   ];
 
   async updateTypeListData(id: number, nombre: string, type: number, precio: number, img: string) {
