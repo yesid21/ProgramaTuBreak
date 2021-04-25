@@ -76,7 +76,7 @@
       <div class="form-group mt-2">
         <h6 class="colorPrincipal text-center">¿Donde ingresaras el dia de hoy?</h6>
         <ng-select appearance="outline" [searchable]="false" #Lugar [(ngModel)]="ObjDatos.LugarSelect"
-          [items]="lstmaestroLugar?.items" bindLabel="nombre" bindValue="nombre" name="cbxidLugar" id="cbxidLugar"
+          [items]="lstmaestroLugar" bindLabel="nombre" bindValue="nombre" name="cbxidLugar" id="cbxidLugar"
           placeholder="Seleccione el lugar a ingresar" required>
         </ng-select>
         <small class="text-danger" *ngIf="ObjDatos.LugarSelect === null && !ObjDatos.LugarSelect">
@@ -88,7 +88,7 @@
       <div class="form-group mt-2">
         <h6 class="colorPrincipal text-center">¿Cómo quieres pagar?</h6>
         <ng-select appearance="outline" [searchable]="false" #Metodo [(ngModel)]="ObjDatos.metodoPagoSelect"
-          [items]="lstMetodoPago?.items" bindLabel="nombre" bindValue="nombre" name="cbxidMetodo" id="cbxidMetodo"
+          [items]="lstMetodoPago" bindLabel="nombre" bindValue="nombre" name="cbxidMetodo" id="cbxidMetodo"
           placeholder="Seleccione el método de pago" required>
         </ng-select>
         <small class="text-danger" *ngIf="ObjDatos.metodoPagoSelect === null && !ObjDatos.metodoPagoSelect">

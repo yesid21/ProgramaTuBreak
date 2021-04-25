@@ -1,6 +1,7 @@
+import { Objetomaestros } from './../config/indexedDb/tipado-maestros/objetomaestros';
+import { MaestrosDb } from './../config/indexedDb/db-maestros';
 import { DatosDB } from './db/datos-db';
 import { Component, OnInit } from '@angular/core';
-import { ObjetoArrayMaestros } from '../config/indexedDb/tipado-maestros/objetomaestros';
 import { DatosObject } from './object/DatosObject';
 
 @Component({
@@ -10,19 +11,18 @@ import { DatosObject } from './object/DatosObject';
 export class DatosComponent implements OnInit {
   ObjDatos?: DatosObject = {};
   today = new Date().toISOString().split('.')[0];
-  lstmaestroLugar: ObjetoArrayMaestros;
-  lstMetodoPago: ObjetoArrayMaestros;
+  lstmaestroLugar?: Objetomaestros[];
+  lstMetodoPago?: Objetomaestros[];
 
-  constructor(private Db: DatosDB) {
+  constructor(
+    private Db: DatosDB,
+    readonly maestrosDB: MaestrosDb
+  ) {
     const day = this.today.substring(0, this.today.length - 3);
     this.today = day;
-    this.Db.getmaestrosLugar().subscribe(res => {
-      this.lstmaestroLugar = res;
-    });
 
-    this.Db.getMetodoPago().subscribe(res => {
-      this.lstMetodoPago = res;
-    });
+    this.lstmaestroLugar = this.maestrosDB.maestros.filter(x => x.type === 2);
+    this.lstMetodoPago = this.maestrosDB.maestros.filter(x => x.type === 4);
   }
 
   ngOnInit() {
