@@ -1,0 +1,103 @@
+.aling_buttons_menu {
+    -webkit-writing-mode: vertical-rl;
+  }
+
+.cardprincipal {
+  background: #f1f1f1;
+  color: #5d5b5b;
+  border: 1px solid #5d5b5b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  & i {
+      margin-bottom: 10px;
+  }
+  border-radius: 0.9rem;
+  width: 150px !important;
+}
+
+.txtcard {
+  text-align: center;
+  margin: 0;
+  align-items: center;
+  font-size: 18px;
+  line-height: 1.2;
+}
+section {
+  height: 100%;
+  background-image: url("assets/images/bg_Programa_Tu_Break@2x.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #5d5b5b;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-position: right 0px;
+  padding: 20px;
+  height: 100%;
+  & h2 {
+    color: #7ad400;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 376px) and (-webkit-min-device-pixel-ratio: 3) {
+  section {
+    background-image: url("assets/images/bg_Programa_Tu_Break_iphone_x.png");
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 769px) and (-webkit-min-device-pixel-ratio: 1) {
+  section {
+    background-image: url("assets/images/bg_Programa_Tu_Break_ipad_1.png");
+  }
+}
+
+.divMain {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  display: block;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .container, .container-sm, .container-md {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .container, .container-sm, .container-md {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .container, .container-sm {
+    max-width: 100%;
+  }
+}
+
+.btn-circle-home
+ {
+   width: 100%;
+ }

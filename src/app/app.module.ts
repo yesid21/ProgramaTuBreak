@@ -6,11 +6,17 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HeaderComponent } from './header/header.component';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -22,6 +28,12 @@ import { environment } from '../environments/environment';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production, registrationStrategy: 'registerImmediately'
     }),
+    FontAwesomeModule,
+    NgSelectModule
+  ],
+  exports: [
+    FontAwesomeModule,
+    NgSelectModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -29,4 +41,10 @@ import { environment } from '../environments/environment';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    private library: FaIconLibrary
+  ) {
+    this.library.addIconPacks(fas, fab);
+  }
+}

@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { fromEvent, merge, Observable, Observer } from 'rxjs';
 import { IndexedDb } from './config/indexedDb/IndexedDb';
 import { map } from 'rxjs/operators';
-import swal from 'sweetalert2'
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,14 +10,16 @@ import swal from 'sweetalert2'
 })
 export class AppComponent {
   title = 'Programa Tu Break';
-
+  conectToFirst = false;
   constructor(private IndexedDb: IndexedDb) {
 
     this.createOnline$().subscribe(isConnected => {
       this.IndexedDb.updateDB();
-      if (isConnected) {
+      if (isConnected && this.conectToFirst) {
+        this.conectToFirst = false;
         swal.fire('En Linea', 'Volviste a tener conexión!', 'success');
-      } else {
+      } else if (!isConnected && !this.conectToFirst) {
+        this.conectToFirst = true;
         swal.fire('Offline', 'puedes seguir con lo tuyo! en cuanto recuperemos la conexion sincronizaremos ;)', 'warning');
       }
       console.log(isConnected ? 'En Linea' : 'Offline');
