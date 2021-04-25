@@ -135,3 +135,18 @@ main {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgb(238 202 0 / 25%);
 }
+
+.ng-select .ng-select-container {
+  font-size: 14px;
+  color: #eeca00;
+  background-color: white;
+  border-color: #eeca00;
+  border-radius: 16px;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(238 202 0 / 25%);
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+  border-color: #eeca00 !important;
+  box-shadow: 0 0 0 0.2rem rgb(238 202 0 / 25%) !important;
+}

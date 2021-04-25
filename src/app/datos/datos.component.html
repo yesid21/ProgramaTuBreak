@@ -62,5 +62,31 @@
         </small>
       </div>
     </form>
+    <form novalidate #form2="ngForm" autocomplete="off">
+      <div class="form-group mt-2">
+        <label for="birthdaytime" class="textPrincipal">Fecha y hora de reserva</label>
+        <input class="form-control text-principal" type="datetime-local" id="birthdaytime" name="birthdaytime"
+          [(ngModel)]="fechaYHora">
+        <small class="text-danger textPrincipal" *ngIf="!fechaYHora">
+          <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
+          </fa-icon>
+          Este campo es requerido
+        </small>
+      </div>
+      <div class="form-group mt-2">
+        <div class="form-group">
+          <h6 class="colorPrincipal text-center">¿Donde ingresaras el dia de hoy?</h6>
+          <ng-select appearance="outline" [searchable]="false" #Lugar [(ngModel)]="LugarSelect" [items]="lstmaestroLugar.items"
+            bindLabel="nombre" bindValue="nombre" name="cbxidLugar" id="cbxidLugar"
+            placeholder="Seleccione el lugar a ingresar" required>
+          </ng-select>
+          <small class="text-danger" *ngIf="LugarSelect === null && !LugarSelect">
+            <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
+            </fa-icon>
+            Este campo es requerido
+          </small>
+        </div>
+      </div>
+    </form>
   </div>
 </section>

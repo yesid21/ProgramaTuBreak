@@ -10,9 +10,9 @@ export class IndexedDb {
   async createDB() {
     await openDB(this.dbName, 1, {
       upgrade(db) {
-        db.createObjectStore('formulario', { keyPath: 'guid' });
-        db.createObjectStore('productos', { keyPath: 'guid' });
-        db.createObjectStore('maestros', { keyPath: 'guid' });
+        db.createObjectStore('formulario', { keyPath: 'id' });
+        db.createObjectStore('productos', { keyPath: 'id' });
+        db.createObjectStore('maestros', { keyPath: 'id' });
       }
     });
   }

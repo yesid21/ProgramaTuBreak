@@ -1,4 +1,6 @@
+import { DatosDB } from './db/datos-db';
 import { Component, OnInit } from '@angular/core';
+import { ObjetoArrayMaestros } from '../config/indexedDb/tipado-maestros/objetomaestros';
 
 @Component({
   selector: 'app-datos',
@@ -10,7 +12,15 @@ export class DatosComponent implements OnInit {
   cedula?: string;
   celular?: number;
   correo?: string;
-  constructor() { }
+  fechaYHora?: Date;
+  LugarSelect?: string;
+  lstmaestroLugar: ObjetoArrayMaestros;
+
+  constructor(private Db: DatosDB) {
+    this.Db.getmaestrosLugar().subscribe(res => {
+      this.lstmaestroLugar = res;
+    });
+  }
 
   ngOnInit() {
   }
