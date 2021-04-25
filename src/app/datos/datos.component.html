@@ -1,13 +1,13 @@
 <app-header></app-header>
-<section class="mt-3">
+<section class="mt-3 pb-5">
   <h3 class="colorPrincipal text-center">Ingresa tus datos</h3>
   <div class="form-config align-items-center justify-content-center">
     <form novalidate #form="ngForm" autocomplete="off">
       <div class="form-group mt-2">
         <label for="Nombre" class="textPrincipal">Nombre</label>
-        <input [(ngModel)]="nombre" (blur)="ValidateNombre()" name="txarnombre" class="form-control textPrincipal"
-          id="txarnombre" placeholder="Ingresa el nombre" type="text" required>
-        <small class="text-danger textPrincipal" *ngIf="nombre != null && !nombre">
+        <input [(ngModel)]="ObjDatos.nombre" (blur)="ValidateNombre()" name="txarnombre"
+          class="form-control textPrincipal" id="txarnombre" placeholder="Ingresa el nombre" type="text" required>
+        <small class="text-danger textPrincipal" *ngIf="ObjDatos.nombre != null && !ObjDatos.nombre">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
           Este campo es requerido
@@ -15,19 +15,19 @@
       </div>
       <div class="form-group mt-2">
         <label for="Apellidos" class="textPrincipal">Apellidos</label>
-        <input [(ngModel)]="apellidos" (blur)="ValidateApellidos()" name="txarapellidos"
+        <input [(ngModel)]="ObjDatos.apellidos" (blur)="ValidateApellidos()" name="txarapellidos"
           class="form-control textPrincipal" id="txarapellidos" placeholder="Ingresa el apellidos" type="text" required>
-        <small class="text-danger textPrincipal" *ngIf="apellidos != null && !apellidos">
+        <small class="text-danger textPrincipal" *ngIf="ObjDatos.apellidos != null && !ObjDatos.apellidos">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
           Este campo es requerido
         </small>
       </div>
       <div class="form-group mt-2">
-        <label for="Cedula" class="textPrincipal">Cedúla</label>
-        <input appNumbersOnly [(ngModel)]="cedula" (blur)="ValidateCedula()" name="txarcedula"
-          class="form-control textPrincipal" id="txarcedula" placeholder="Ingresa el cedula" type="tel" required>
-        <small class="text-danger textPrincipal" *ngIf="cedula != null && !cedula">
+        <label for="Cedula" class="textPrincipal">Cédula</label>
+        <input appNumbersOnly [(ngModel)]="ObjDatos.cedula" (blur)="ValidateCedula()" name="txarcedula"
+          class="form-control textPrincipal" id="txarcedula" placeholder="Ingresa la cédula" type="tel" required>
+        <small class="text-danger textPrincipal" *ngIf="ObjDatos.cedula != null && !ObjDatos.cedula">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
           Este campo es requerido
@@ -35,9 +35,9 @@
       </div>
       <div class="form-group mt-2">
         <label for="Celular" class="textPrincipal">Celular</label>
-        <input appNumbersOnly [(ngModel)]="celular" (blur)="ValidateCelular()" name="txarcelular"
+        <input appNumbersOnly [(ngModel)]="ObjDatos.celular" (blur)="ValidateCelular()" name="txarcelular"
           class="form-control textPrincipal" id="txarcelular" placeholder="Ingresa el celular" type="tel" required>
-        <small class="text-danger textPrincipal" *ngIf="celular === null && !celular">
+        <small class="text-danger textPrincipal" *ngIf="ObjDatos.celular === null && !ObjDatos.celular">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
           Este campo es requerido
@@ -47,15 +47,15 @@
     <form novalidate #formCorreo="ngForm" autocomplete="off">
       <div class="form-group mt-2">
         <label for="Correo" class="textPrincipal">Correo electrónico</label>
-        <input [(ngModel)]="correo" pattern="[ a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z ]{2,}$" name="txarcorreo"
-          class="form-control textPrincipal" id="txarcorreo" placeholder="Ingresa el correo electrónico"
-          (blur)="ValidateEmail()" type="email" required>
-        <small class="text-danger" *ngIf="correo != null && !correo">
+        <input [(ngModel)]="ObjDatos.correo" pattern="[ a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z ]{2,}$"
+          name="txarcorreo" class="form-control textPrincipal" id="txarcorreo"
+          placeholder="Ingresa el correo electrónico" (blur)="ValidateEmail()" type="email" required>
+        <small class="text-danger" *ngIf="ObjDatos.correo != null && !ObjDatos.correo">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
           Este campo es requerido
         </small>
-        <small class="text-danger" *ngIf="!!correo && formCorreo.invalid">
+        <small class="text-danger" *ngIf="!!ObjDatos.correo && formCorreo.invalid">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
           Formato de email incorrecto
@@ -65,28 +65,47 @@
     <form novalidate #form2="ngForm" autocomplete="off">
       <div class="form-group mt-2">
         <label for="birthdaytime" class="textPrincipal">Fecha y hora de reserva</label>
-        <input class="form-control text-principal" type="datetime-local" id="birthdaytime" name="birthdaytime"
-          [(ngModel)]="fechaYHora">
-        <small class="text-danger textPrincipal" *ngIf="!fechaYHora">
+        <input min="{{today}}" class="form-control text-principal" type="datetime-local" id="birthdaytime"
+          name="birthdaytime" [(ngModel)]="ObjDatos.fechaYHora" required>
+        <small class="text-danger textPrincipal" *ngIf="!ObjDatos.fechaYHora">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
           </fa-icon>
           Este campo es requerido
         </small>
       </div>
       <div class="form-group mt-2">
-        <div class="form-group">
-          <h6 class="colorPrincipal text-center">¿Donde ingresaras el dia de hoy?</h6>
-          <ng-select appearance="outline" [searchable]="false" #Lugar [(ngModel)]="LugarSelect" [items]="lstmaestroLugar.items"
-            bindLabel="nombre" bindValue="nombre" name="cbxidLugar" id="cbxidLugar"
-            placeholder="Seleccione el lugar a ingresar" required>
-          </ng-select>
-          <small class="text-danger" *ngIf="LugarSelect === null && !LugarSelect">
-            <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
-            </fa-icon>
-            Este campo es requerido
-          </small>
-        </div>
+        <h6 class="colorPrincipal text-center">¿Donde ingresaras el dia de hoy?</h6>
+        <ng-select appearance="outline" [searchable]="false" #Lugar [(ngModel)]="ObjDatos.LugarSelect"
+          [items]="lstmaestroLugar?.items" bindLabel="nombre" bindValue="nombre" name="cbxidLugar" id="cbxidLugar"
+          placeholder="Seleccione el lugar a ingresar" required>
+        </ng-select>
+        <small class="text-danger" *ngIf="ObjDatos.LugarSelect === null && !ObjDatos.LugarSelect">
+          <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
+          </fa-icon>
+          Este campo es requerido
+        </small>
+      </div>
+      <div class="form-group mt-2">
+        <h6 class="colorPrincipal text-center">¿Cómo quieres pagar?</h6>
+        <ng-select appearance="outline" [searchable]="false" #Metodo [(ngModel)]="ObjDatos.metodoPagoSelect"
+          [items]="lstMetodoPago?.items" bindLabel="nombre" bindValue="nombre" name="cbxidMetodo" id="cbxidMetodo"
+          placeholder="Seleccione el método de pago" required>
+        </ng-select>
+        <small class="text-danger" *ngIf="ObjDatos.metodoPagoSelect === null && !ObjDatos.metodoPagoSelect">
+          <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
+          </fa-icon>
+          Este campo es requerido
+        </small>
       </div>
     </form>
+  </div>
+  <div class="row no-gutters align-items-center justify-content-center pt-5">
+    <div class="btnfijo">
+
+      <div class="col-11 text-center">
+        <button (click)="null" [disabled]="form.invalid || formCorreo.invalid || form2.invalid"
+          class="btn btn-warning">Siguiente</button>
+      </div>
+    </div>
   </div>
 </section>

@@ -13,6 +13,11 @@ export class DatosDB {
     return from(this.getTypeListFilteredToResponse(2));
   }
 
+  getMetodoPago(): Observable<ObjetoArrayMaestros> {
+    return from(this.getTypeListFilteredToResponse(4));
+  }
+
+
   // todo : needs to do more elegant
   async getTypeListToResponse() {
     const typelistResponse = new ObjetoArrayMaestros();
