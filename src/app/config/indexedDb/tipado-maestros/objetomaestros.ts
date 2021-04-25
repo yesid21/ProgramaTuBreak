@@ -22,3 +22,7 @@ export class Objetomaestros {
 export class ObjetoArrayMaestros {
   items: Objetomaestros[];
 }
+
+export class DatosQuanty extends Objetomaestros {
+  quantity?: number;
+}
