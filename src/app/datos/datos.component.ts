@@ -1,7 +1,8 @@
+import { CurrentStep } from './../currentStep.enum';
 import { Objetomaestros } from './../config/indexedDb/tipado-maestros/objetomaestros';
 import { MaestrosDb } from './../config/indexedDb/db-maestros';
 import { DatosDB } from './db/datos-db';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { DatosObject } from './object/DatosObject';
 
 @Component({
@@ -13,6 +14,9 @@ export class DatosComponent implements OnInit {
   today = new Date().toISOString().split('.')[0];
   lstmaestroLugar?: Objetomaestros[];
   lstMetodoPago?: Objetomaestros[];
+  currentStep: CurrentStep;
+  Steps = CurrentStep;
+  changeValueCurrentStep = new EventEmitter<CurrentStep>();
 
   constructor(
     private Db: DatosDB,
@@ -26,6 +30,7 @@ export class DatosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentStep = CurrentStep.STEP_1;
   }
 
   ValidateEmail() {
@@ -65,5 +70,10 @@ export class DatosComponent implements OnInit {
       }
 
     }
+  }
+
+  despachar(){
+    this.currentStep = CurrentStep.STEP_2
+    this.changeValueCurrentStep.emit(this.currentStep);
   }
 }

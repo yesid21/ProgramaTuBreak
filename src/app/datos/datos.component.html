@@ -1,5 +1,5 @@
-<app-header></app-header>
-<section class="mt-3 pb-5">
+<app-header [currentStep]="currentStep" (changeValueCurrentStep)="currentStep = $event"></app-header>
+<section class="mt-3 pb-5" *ngIf="currentStep === Steps.STEP_1">
   <h3 class="colorPrincipal text-center">Ingresa tus datos</h3>
   <div class="form-config align-items-center justify-content-center">
     <form novalidate #form="ngForm" autocomplete="off">
@@ -103,9 +103,11 @@
     <div class="btnfijo">
 
       <div class="col-11 text-center">
-        <button (click)="null" [disabled]="form.invalid || formCorreo.invalid || form2.invalid"
+        <button (click)="despachar()" [disabled]="form.invalid || formCorreo.invalid || form2.invalid"
           class="btn btn-warning">Siguiente</button>
       </div>
     </div>
   </div>
 </section>
+
+<app-lugar *ngIf="currentStep === Steps.STEP_2"></app-lugar>

@@ -14,6 +14,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { DatosComponent } from './datos/datos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NumbersDirective } from './config/directives/appNumbersOnly.directive';
+import { LugarComponent } from './lugar/lugar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NumbersDirective } from './config/directives/appNumbersOnly.directive';
     HomeComponent,
     HeaderComponent,
     DatosComponent,
-    NumbersDirective
+    NumbersDirective,
+    LugarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
