@@ -91,12 +91,16 @@ export class LugarComponent implements OnInit {
   }
 
   servicio() {
-    if (this.suma() <= 7000) {
-      return 300;
-    } else if (this.suma() >= 7000 && this.suma() <= 13000) {
-      return 650;
+    if (this.ObjDatos.LugarSelect.toUpperCase() !== 'PARQUEADERO') {
+      if (this.suma() <= 7000) {
+        return 300;
+      } else if (this.suma() >= 7000 && this.suma() <= 13000) {
+        return 650;
+      } else {
+        return 1000;
+      }
     } else {
-      return 1000;
+      return 250;
     }
   }
 

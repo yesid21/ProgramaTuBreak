@@ -1,7 +1,10 @@
+import { GuardarForm } from './../config/indexedDb/tipado-maestros/objetomaestros';
 import { DatosObject } from './../datos/object/DatosObject';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CurrentStep } from '../currentStep.enum';
 import { DatosQuanty } from '../config/indexedDb/tipado-maestros/objetomaestros';
+import { FormularioDb } from '../config/indexedDb/db-formulario';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalle',
@@ -15,8 +18,8 @@ export class DetalleComponent implements OnInit {
   validation = true;
   @Input() detailsObj: DatosQuanty[];
   total?: number;
-  mensajeFinal?:string;
-  constructor() { }
+  mensajeFinal?: string;
+  constructor(private formDB: FormularioDb) { }
 
   ngOnInit() {
   }
@@ -38,12 +41,16 @@ export class DetalleComponent implements OnInit {
   }
 
   servicio() {
-    if (this.suma() <= 7000) {
-      return 300;
-    } else if (this.suma() >= 7000 && this.suma() <= 13000) {
-      return 650;
+    if (this.ObjDatos.LugarSelect.toUpperCase() !== 'PARQUEADERO') {
+      if (this.suma() <= 7000) {
+        return 300;
+      } else if (this.suma() >= 7000 && this.suma() <= 13000) {
+        return 650;
+      } else {
+        return 1000;
+      }
     } else {
-      return 1000;
+      return 250;
     }
   }
 
@@ -51,7 +58,21 @@ export class DetalleComponent implements OnInit {
     return this.suma() + this.servicio();
   }
 
-  guardar(){
+  guardar() {
+    const form = this.armarObjeto();
+    this.formDB.insertForm(form).then(res => {
+      if (res) {
+        Swal.fire('Exito', 'Exito al envíar', 'success');
+        location.assign('/');
+      }
+    });
+  }
 
+  armarObjeto() {
+    let formulario: GuardarForm = {};
+    formulario.datos = this.ObjDatos;
+    formulario.compra = this.detailsObj;
+    formulario.mensaje = this.mensajeFinal;
+    return formulario;
   }
 }

@@ -1,3 +1,5 @@
+import { DatosObject } from "src/app/datos/object/DatosObject";
+
 export class Objetomaestros {
   id?: number;
   nombre?: string;
@@ -27,3 +29,11 @@ export class DatosQuanty extends Objetomaestros {
   quantity?: number;
   subTotal?: number;
 }
+
+export class GuardarForm {
+  guid?: string;
+  datos?: DatosObject;
+  compra?: DatosQuanty[];
+  mensaje?: string;
+}
+
