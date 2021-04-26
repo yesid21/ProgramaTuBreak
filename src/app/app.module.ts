@@ -18,7 +18,7 @@ import { LugarComponent } from './lugar/lugar.component';
 import { DetalleComponent } from './detalle/detalle.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
