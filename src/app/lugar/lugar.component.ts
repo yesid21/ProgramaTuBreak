@@ -5,6 +5,7 @@ import { CurrentStep } from '../currentStep.enum';
 import { MaestrosDb } from '../config/indexedDb/db-maestros';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import swal from 'sweetalert2';
+import { identifierModuleUrl } from '@angular/compiler';
 @Component({
   selector: 'app-lugar',
   templateUrl: './lugar.component.html'
@@ -15,12 +16,12 @@ export class LugarComponent implements OnInit {
   @Output() changeValueCurrentStep = new EventEmitter<CurrentStep>();
   @Output() changeValueobjModal = new EventEmitter<DatosQuanty[]>();
   Steps = CurrentStep;
-  lstMaterial: Objetomaestros[];
-  lstMaterial2: Objetomaestros[];
-  lstMaterial3: Objetomaestros[];
+  @Input() lstMaterial: Objetomaestros[];
+  @Input() lstMaterial2: Objetomaestros[];
+  @Input() lstMaterial3: Objetomaestros[];
   closeResult = '';
   objModal: Objetomaestros;
-  detailsObj: DatosQuanty[] = [];
+  @Input() detailsObj: DatosQuanty[] = [];
   total?: number;
   constructor
     (
@@ -29,19 +30,6 @@ export class LugarComponent implements OnInit {
   }
 
   ngOnInit() {
-    switch (this.ObjDatos.LugarSelect.toUpperCase()) {
-      case 'RESTAURANTE':
-        this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 1);
-        this.lstMaterial2 = this.maestrosDB.maestros.filter(x => x.type === 6);
-        this.lstMaterial3 = this.maestrosDB.maestros.filter(x => x.type === 7);
-        break;
-      case 'PARQUEADERO':
-        this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 3);
-        break;
-      case 'PAPELERÍA':
-        this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 5);
-        break;
-    }
   }
 
   open(content, item: Objetomaestros) {
@@ -93,9 +81,11 @@ export class LugarComponent implements OnInit {
 
   suma() {
     this.total = null;
-    this.detailsObj.forEach((elem: DatosQuanty) => {
-      this.total += elem.subTotal;
-    });
+    if (this.detailsObj.length > 0) {
+      this.detailsObj.forEach((elem: DatosQuanty) => {
+        this.total += elem.subTotal;
+      });
+    }
     return this.total;
   }
 
@@ -121,6 +111,12 @@ export class LugarComponent implements OnInit {
 
   eliminarItem(item: DatosQuanty) {
     this.detailsObj = this.detailsObj.filter(x => x.id !== item.id);
-  };
+  }
+
+  despachar() {
+    window.scroll(0, 0);
+    this.currentStep = CurrentStep.STEP_3;
+    this.changeValueCurrentStep.emit(this.currentStep);
+  }
 
 }

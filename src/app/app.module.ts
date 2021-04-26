@@ -15,16 +15,18 @@ import { DatosComponent } from './datos/datos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NumbersDirective } from './config/directives/appNumbersOnly.directive';
 import { LugarComponent } from './lugar/lugar.component';
+import { DetalleComponent } from './detalle/detalle.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomeComponent,
     HeaderComponent,
     DatosComponent,
     NumbersDirective,
-    LugarComponent
-  ],
+    LugarComponent,
+      DetalleComponent
+   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     RouterModule.forRoot([

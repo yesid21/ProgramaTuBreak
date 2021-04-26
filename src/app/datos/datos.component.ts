@@ -1,5 +1,5 @@
 import { CurrentStep } from './../currentStep.enum';
-import { Objetomaestros } from './../config/indexedDb/tipado-maestros/objetomaestros';
+import { DatosQuanty, Objetomaestros } from './../config/indexedDb/tipado-maestros/objetomaestros';
 import { MaestrosDb } from './../config/indexedDb/db-maestros';
 import { DatosDB } from './db/datos-db';
 import { Component, EventEmitter, OnInit } from '@angular/core';
@@ -18,7 +18,14 @@ export class DatosComponent implements OnInit {
   Steps = CurrentStep;
   changeValueCurrentStep = new EventEmitter<CurrentStep>();
   changeValueObjDatos = new EventEmitter<DatosObject>();
-
+  changeValuedetailsObj = new EventEmitter<DatosQuanty[]>();
+  lstMaterial: Objetomaestros[];
+  lstMaterial2: Objetomaestros[];
+  lstMaterial3: Objetomaestros[];
+  detailsObj: DatosQuanty[] = [];
+  changeValuelstMaterial = new EventEmitter<Objetomaestros[]>();
+  changeValuelstMaterial2 = new EventEmitter<Objetomaestros[]>();
+  changeValuelstMaterial3 = new EventEmitter<Objetomaestros[]>();
   constructor(
     private Db: DatosDB,
     readonly maestrosDB: MaestrosDb
@@ -75,8 +82,30 @@ export class DatosComponent implements OnInit {
 
   despachar() {
     window.scroll(0, 0);
+
+    switch (this.ObjDatos.LugarSelect.toUpperCase()) {
+      case 'RESTAURANTE':
+        this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 1);
+        this.lstMaterial2 = this.maestrosDB.maestros.filter(x => x.type === 6);
+        this.lstMaterial3 = this.maestrosDB.maestros.filter(x => x.type === 7);
+        break;
+      case 'PARQUEADERO':
+        this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 3);
+        break;
+      case 'PAPELERÍA':
+        this.lstMaterial = this.maestrosDB.maestros.filter(x => x.type === 5);
+        break;
+    }
     this.currentStep = CurrentStep.STEP_2;
+    this.changeValuelstMaterial.emit(this.lstMaterial);
+    this.changeValuelstMaterial2.emit(this.lstMaterial2);
+    this.changeValuelstMaterial3.emit(this.lstMaterial3);
     this.changeValueObjDatos.emit(this.ObjDatos);
     this.changeValueCurrentStep.emit(this.currentStep);
+    this.changeValuedetailsObj.emit(this.detailsObj);
+  }
+
+  validateLstCompra() {
+    this.detailsObj = [];
   }
 }

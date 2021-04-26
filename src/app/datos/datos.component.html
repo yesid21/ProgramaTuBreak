@@ -77,7 +77,7 @@
         <h6 class="colorPrincipal text-center">¿Donde ingresaras el dia de hoy?</h6>
         <ng-select appearance="outline" [searchable]="false" #Lugar [(ngModel)]="ObjDatos.LugarSelect"
           [items]="lstmaestroLugar" bindLabel="nombre" bindValue="nombre" name="cbxidLugar" id="cbxidLugar"
-          placeholder="Seleccione el lugar a ingresar" required>
+          placeholder="Seleccione el lugar a ingresar" (blur)="validateLstCompra()" required>
         </ng-select>
         <small class="text-danger" *ngIf="ObjDatos.LugarSelect === null && !ObjDatos.LugarSelect">
           <fa-icon [icon]="['fas', 'times-circle']" data-original-title="" title="">
@@ -110,5 +110,9 @@
   </div>
 </section>
 
-<app-lugar *ngIf="currentStep === Steps.STEP_2" [currentStep]="currentStep"
-  (changeValueCurrentStep)="currentStep = $event" [ObjDatos]="ObjDatos"></app-lugar>
+<app-lugar [hidden]="!(currentStep === Steps.STEP_2)" [currentStep]="currentStep"
+  (changeValueCurrentStep)="currentStep = $event" [ObjDatos]="ObjDatos" [lstMaterial]="lstMaterial"
+  [lstMaterial2]="lstMaterial2" [lstMaterial3]="lstMaterial3" [detailsObj]="detailsObj"></app-lugar>
+
+<app-detalle [hidden]="!(currentStep === Steps.STEP_3)" [currentStep]="currentStep"
+  (changeValueCurrentStep)="currentStep = $event" [ObjDatos]="ObjDatos"></app-detalle>
