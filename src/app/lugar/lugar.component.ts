@@ -21,6 +21,7 @@ export class LugarComponent implements OnInit {
   closeResult = '';
   objModal: Objetomaestros;
   detailsObj: DatosQuanty[] = [];
+  total?: number;
   constructor
     (
       readonly maestrosDB: MaestrosDb,
@@ -79,13 +80,47 @@ export class LugarComponent implements OnInit {
       itemToModified.type = item.type;
       itemToModified.img = item.img;
       itemToModified.quantity = parseFloat(quantity);
+      itemToModified.subTotal = parseFloat(quantity) * item.precio;
       swal.fire('Producto Actualizado', 'El producto ya existia asi que fue actualizado', 'success');
     } else {
       item.quantity = parseFloat(quantity);
+      item.subTotal = parseFloat(quantity) * item.precio;
       this.detailsObj.push(item);
       swal.fire('Producto Agregado', 'El producto fue agregado', 'success');
     }
     this.changeValueobjModal.emit(this.detailsObj);
   }
+
+  suma() {
+    this.total = null;
+    this.detailsObj.forEach((elem: DatosQuanty) => {
+      this.total += elem.subTotal;
+    });
+    return this.total;
+  }
+
+  servicio() {
+    if (this.suma() <= 7000) {
+      return 300;
+    } else if (this.suma() >= 7000 && this.suma() <= 13000) {
+      return 650;
+    } else {
+      return 1000;
+    }
+  }
+
+  validateModal(value?: any) {
+    const val = parseFloat(value);
+    if (val <= 0) {
+      return false;
+    } else if (val > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  eliminarItem(item: DatosQuanty) {
+    this.detailsObj = this.detailsObj.filter(x => x.id !== item.id);
+  };
 
 }

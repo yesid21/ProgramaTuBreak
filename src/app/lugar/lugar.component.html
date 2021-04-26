@@ -1,4 +1,9 @@
 <section class="mt-3 pb-5">
+  <h3 class="colorPrincipal text-center">
+
+    {{ObjDatos.LugarSelect == 'Restaurante' ? 'Restaurante' : (ObjDatos.LugarSelect == 'Parqueadero' ? 'Parqueadero' :
+    'Papelería')}}
+  </h3>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-home-tab" href="#nav-home" data-toggle="tab" role="tab"
@@ -57,21 +62,44 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Producto</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
+            <th scope="col" class="text-center">Producto</th>
+            <th scope="col" class="text-center">Precio</th>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Sub</th>
+            <th scope="col" class="text-center">-</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of detailsObj; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>
+            <td class="text-center">
               <img src="assets/images/{{item.img}}.jpg" class="mr-2" style="width: 20px">
               {{ item.nombre }}
             </td>
-            <td>{{ item.precio | number }}</td>
-            <td>{{ item.quantity }}</td>
+            <td class="text-center">{{ item.precio | number }}</td>
+            <td class="text-center">{{ item.quantity }}</td>
+            <td class="text-center">{{ item.subTotal | number }}</td>
+            <td class="text-center">
+              <button class="button_lugar" (click)="eliminarItem(item)">
+                <fa-icon [icon]="['fas', 'trash']" data-original-title="" title="">
+                </fa-icon>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">Servicio</td>
+            <td class="text-center">{{ servicio() | number }}</td>
+            <td class="text-center">{{ 1 }}</td>
+            <td class="text-center">{{ servicio() | number }}</td>
+            <td class="text-center"></td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th scope="col" class="text-center"></th>
+            <th scope="col" class="text-center"></th>
+            <th scope="col" class="text-center">Total =</th>
+            <th scope="col" class="text-center">{{ suma() + servicio() | number}}</th>
+            <th scope="col" class="text-center"></th>
           </tr>
         </tbody>
       </table>
@@ -92,16 +120,22 @@
         <div class="form-group">
           <label for="dateOfBirth">Cantidad</label>
           <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="Ingrese la cantidad de {{objModal.nombre}}" #dp
-              name="dp" type="text">
+            <input id="dateOfBirth" (keyup)="validateModal(dp.value)" class="form-control"
+              placeholder="Ingrese la cantidad de {{objModal.nombre}}" #dp name="dp" type="text">
           </div>
         </div>
       </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancelar</button>
-      <button (click)="Add(objModal, dp.value); modal.close();" [disabled]="form.invalid"
+      <button (click)="Add(objModal, dp.value); modal.close();" [disabled]="form.invalid || !validateModal(dp.value)"
         class="btn btn-warning">Siguiente</button>
     </div>
   </ng-template>
+  <div class="row no-gutters align-items-center justify-content-center pt-5">
+
+    <div class="col-11 text-center">
+      <button (click)="null" [disabled]="detailsObj.length <= 0" class="btn btn-warning">Siguiente</button>
+    </div>
+  </div>
 </section>

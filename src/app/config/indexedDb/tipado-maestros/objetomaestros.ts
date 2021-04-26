@@ -25,4 +25,5 @@ export class ObjetoArrayMaestros {
 
 export class DatosQuanty extends Objetomaestros {
   quantity?: number;
+  subTotal?: number;
 }
