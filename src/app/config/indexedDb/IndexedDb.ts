@@ -11,7 +11,6 @@ export class IndexedDb {
     await openDB(this.dbName, 1, {
       upgrade(db) {
         db.createObjectStore('formulario', { keyPath: 'id' });
-        db.createObjectStore('productos', { keyPath: 'id' });
         db.createObjectStore('maestros', { keyPath: 'id' });
       }
     });
@@ -22,7 +21,7 @@ export class IndexedDb {
   }
 
   async updateDB() {
-    const numberTablesDB = 3;
+    const numberTablesDB = 2;
     const dbProgramaTuBreak = await openDB(this.dbName, 1);
     if (dbProgramaTuBreak.objectStoreNames.length < numberTablesDB) {
       this.deleteDB();

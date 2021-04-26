@@ -38,7 +38,7 @@ export class DatosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentStep = CurrentStep.STEP_1;
+    this.currentStep = CurrentStep.STEP_3;
   }
 
   ValidateEmail() {

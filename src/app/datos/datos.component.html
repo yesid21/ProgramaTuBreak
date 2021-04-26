@@ -112,7 +112,8 @@
 
 <app-lugar [hidden]="!(currentStep === Steps.STEP_2)" [currentStep]="currentStep"
   (changeValueCurrentStep)="currentStep = $event" [ObjDatos]="ObjDatos" [lstMaterial]="lstMaterial"
-  [lstMaterial2]="lstMaterial2" [lstMaterial3]="lstMaterial3" [detailsObj]="detailsObj"></app-lugar>
+  [lstMaterial2]="lstMaterial2" [lstMaterial3]="lstMaterial3" [detailsObj]="detailsObj"
+  (changeValuedetailsObj)="detailsObj = $event"></app-lugar>
 
 <app-detalle [hidden]="!(currentStep === Steps.STEP_3)" [currentStep]="currentStep"
-  (changeValueCurrentStep)="currentStep = $event" [ObjDatos]="ObjDatos"></app-detalle>
+  (changeValueCurrentStep)="currentStep = $event" [ObjDatos]="ObjDatos" [detailsObj]="detailsObj"></app-detalle>

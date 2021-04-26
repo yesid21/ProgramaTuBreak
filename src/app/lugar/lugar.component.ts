@@ -15,6 +15,7 @@ export class LugarComponent implements OnInit {
   @Input() ObjDatos?: DatosObject;
   @Output() changeValueCurrentStep = new EventEmitter<CurrentStep>();
   @Output() changeValueobjModal = new EventEmitter<DatosQuanty[]>();
+  @Output() changeValuedetailsObj = new EventEmitter<DatosQuanty[]>();
   Steps = CurrentStep;
   @Input() lstMaterial: Objetomaestros[];
   @Input() lstMaterial2: Objetomaestros[];
@@ -116,6 +117,7 @@ export class LugarComponent implements OnInit {
   despachar() {
     window.scroll(0, 0);
     this.currentStep = CurrentStep.STEP_3;
+    this.changeValuedetailsObj.emit(this.detailsObj);
     this.changeValueCurrentStep.emit(this.currentStep);
   }
 

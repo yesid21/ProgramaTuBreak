@@ -89,6 +89,19 @@ main {
   color: #eeca00;
   font-family: Helvetica;
  }
+ .colorPrincipal:hover {
+  color: #eeca00;
+  font-family: Helvetica;
+ }
+ .colorPrincipal:focus {
+  color: #eeca00;
+  font-family: Helvetica;
+ }
+
+ .btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #eeca00;
+}
 
  .textPrincipal {
   font-family: Helvetica;
@@ -216,3 +229,8 @@ a {
 button {
   border-radius: 24px !important;
 }
+
+.textareadetalle {
+  height:  100px  !important;
+}
+
